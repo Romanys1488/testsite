@@ -1,0 +1,18 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Tags list - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="tags_list_page">
+    <h1 class="mb-5" >Sizes:<hr id="hr_tags_list"></h1>
+      <div class="colors ml-1">
+        <h1>
+    {% for size in sizes %}
+      {{size.size}}
+      {% endfor %}
+      </h1>
+        </div>
+{% endblock %}

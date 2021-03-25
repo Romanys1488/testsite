@@ -1,0 +1,18 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Tags list - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="tags_list_page">
+    <h1 class="mb-5" >Colors:<hr id="hr_tags_list"></h1>
+      <div class="colors ml-1">
+        <h1>
+    {% for color in colors %}
+    <a href="{{ color.get_absolute_url }}">{{color.color}}</a>
+      {% endfor %}
+      </h1>
+        </div>
+{% endblock %}

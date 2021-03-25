@@ -1,0 +1,41 @@
+{% extends 'blog/base_blog.html' %}
+
+
+{% block title %}
+    Create Post - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <form action="{% url 'bound_create_url' %}"  method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+
+
+      {% for field in form %}
+
+          <div class="form-group">
+              {% if field.errors %}
+                  <div class="alert alert-danger">
+                    {{ field.errors }}
+                  </div>
+                  {% endif %}
+              {{ field.label }}
+              {{ field }}
+          </div>
+
+      {% endfor %}
+
+      {% for field in boundtable.value_set.select_related %}
+        {{field.itemattributes.size}}
+        {{field.itemattributes.color}}
+        {{field.itemattributes.label}}
+        {% endfor %}
+      <button type="submit" name="button" class="btn btn-primary">Bound</button>
+    </form>
+
+
+{% endblock %}

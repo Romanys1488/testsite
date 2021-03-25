@@ -1,0 +1,12 @@
+
+.card-image {
+  display:flex;
+
+  align-items: center;
+  width:30%;
+}
+
+.card_body_all{
+  display: flex;
+  justify-content: space-between;
+}

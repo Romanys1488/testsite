@@ -1,0 +1,18 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    {{ attribute.title }}  {{ block.super}}
+{% endblock %}
+
+
+{% block content %}
+      <div class="tag_detail_page">
+    <h1 id="tag_color_text">Товары, относящиеся к атрибуту: "{{ attributetype.item_type|title }}"</h1>
+    <br>
+    {% for post in attributetype.posts.all %}
+        {% include 'blog/includes/post_card_template.html' %}
+    {% endfor %}
+    <a href="{% url 'attributes_list_url' %}" class="btn btn-light">See all attributes</a>
+</div>
+
+{% endblock %}

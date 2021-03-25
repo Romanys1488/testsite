@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<!-- {{ post.date_pub }} -->
+<div class="card mb-5 ml-5" style="width: 25rem;">
+  {% if post.image %}
+  <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+  {% endif %}
+
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.body }}</p>
+    <p class="price">{{ post.price }}{{ post.currency }}</p><a href="{{ post.get_absolute_url }}" class="btn btn-light mb-3">Buy</a>
+      <div class="card-footer text-muted">
+           Tags:
+           {% for tag in post.tags.all %}
+              <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+           {% endfor %}
+     </div>
+  </div>
+</div>

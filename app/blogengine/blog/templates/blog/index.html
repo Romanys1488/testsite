@@ -1,0 +1,19 @@
+{% extends 'blog/base_blog.html' %}
+
+  {% block title %}
+      Items list
+  {% endblock %}
+
+
+    {% block content %}
+    <h1 class='mb-5'></h1>
+    <div class="categories mb-2">
+
+    </div>
+
+    {% for post in page_object.object_list %}
+
+        {% include 'blog/includes/post_card_template.html' %}
+
+      {% endfor %}
+    {% endblock %}

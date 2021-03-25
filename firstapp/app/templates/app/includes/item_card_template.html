@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem; mb-4">
+  <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-header">
+      {{ item.date_pub }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">{{ item.body|truncatewords:15 }}</p>
+    <a href="{{ item.get_absolute_url }}" class="btn btn-light">See</a>
+  </div>
+    <div class="card-footer text-muted">
+        Tags:
+        {% for tag in item.tags.all %}
+          <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+          {% endfor %}
+    </div>
+</div>

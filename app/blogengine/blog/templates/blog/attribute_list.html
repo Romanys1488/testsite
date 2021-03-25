@@ -1,0 +1,19 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Attributes list - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="tags_list_page">
+    <h1 class="mb-3">Attributes:<hr id="hr_tags_list"></h1>
+      <div class="colors ml-1">
+        <h1 id="tag_color_text">
+    {% for attribute in attributes %}
+      <a href="{{ attribute.get_absolute_url }}">{{attribute.item_type}}<br></a>
+
+      {% endfor %}
+      </h1>
+        </div>
+{% endblock %}

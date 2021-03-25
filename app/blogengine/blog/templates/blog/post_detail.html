@@ -1,0 +1,52 @@
+{% extends 'blog/base_blog.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ tag.title }}  {{ block.super}}
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="post_page">
+  <h1 class="title">
+    {{ post.title|title }}
+  </h1>
+</div>
+<hr id="hrr">
+<div class="img">
+  {% if post.image %}
+  <img src="{{ post.image.url }}" width="60%">
+  {% endif %}
+</div>
+<div class="desc">
+  <p class="mt-4">{{ post.body }}</p>
+
+
+
+  <hr>
+  {% for attr in itemattributes_list %}
+    <a>Цвет: {{ attr.color }}</a>
+    <br>
+    <a>Производитель: {{ attr.label }}</a>
+    {% if attr.size == "" %}
+      <br>
+      {%else%}
+      <br>
+    <a>Размер: {{ attr.size }}</a>
+    <br>
+    {% endif %}
+    {% endfor %}
+  <a>Цена: {{ post.price }}$</a>
+</div>
+<div class="add_to_cart">
+  <form action="{% url 'cart:cart_add' post.id %}" method="POST">
+    {{ cart_item_form }}
+    {% csrf_token %}<br>
+    <input class="btn btn-primary" type="submit" value="Add to cart">
+  </form>
+</div>
+
+{% endblock %}
